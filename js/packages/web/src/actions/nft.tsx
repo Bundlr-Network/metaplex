@@ -191,7 +191,7 @@ export const mintNFT = async (
   progressCallback(2);
 
   // TODO: enable when using payer account to avoid 2nd popup
-  // const block = await connection.getRecentBlockhash('singleGossip');
+  // const block = await connection.getLatestBlockhash({ commitment: 'singleGossip' });
   // instructions.push(
   //   SystemProgram.transfer({
   //     fromPubkey: wallet.publicKey,

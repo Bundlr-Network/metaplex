@@ -135,7 +135,7 @@ export const sendTransactions = async (
   const unsignedTxns: Transaction[] = [];
 
   if (!block) {
-    block = await connection.getRecentBlockhash(commitment);
+    block = await connection.getLatestBlockhash({ commitment });
   }
 
   for (let i = 0; i < instructionSet.length; i++) {
@@ -229,7 +229,7 @@ export const sendTransaction = async (
   let transaction = new Transaction();
   instructions.forEach(instruction => transaction.add(instruction));
   transaction.recentBlockhash = (
-    block || (await connection.getRecentBlockhash(commitment))
+    block || (await connection.getLatestBlockhash({ commitment }))
   ).blockhash;
 
   if (includesFeePayer) {
@@ -296,7 +296,7 @@ export const sendTransactionWithRetry = async (
   let transaction = new Transaction();
   instructions.forEach(instruction => transaction.add(instruction));
   transaction.recentBlockhash = (
-    block || (await connection.getRecentBlockhash(commitment))
+    block || (await connection.getLatestBlockhash({ commitment }))
   ).blockhash;
 
   if (includesFeePayer) {

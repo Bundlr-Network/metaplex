@@ -765,7 +765,8 @@ export const Claim = (
 
     const transaction = new Transaction({
       feePayer: wallet.publicKey,
-      recentBlockhash: (await connection.getRecentBlockhash("singleGossip")).blockhash,
+      recentBlockhash: (await connection.getLatestBlockhash({ commitment: 'singleGossip' }))
+        .blockhash,
     });
 
     const signers = new Set<PublicKey>();

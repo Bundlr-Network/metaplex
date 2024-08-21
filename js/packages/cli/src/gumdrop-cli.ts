@@ -539,7 +539,7 @@ async function sendTransactionWithRetry(
   const transaction = new Transaction();
   instructions.forEach(instruction => transaction.add(instruction));
   transaction.recentBlockhash = (
-    await connection.getRecentBlockhash(commitment)
+    await connection.getLatestBlockhash({ commitment })
   ).blockhash;
 
   transaction.setSigners(

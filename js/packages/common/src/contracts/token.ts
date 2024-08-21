@@ -38,7 +38,7 @@ export const mintNFT = async (
   let transaction = new Transaction();
   const signers = [mintAccount, tokenAccount];
   transaction.recentBlockhash = (
-    await connection.getRecentBlockhash('max')
+    await connection.getLatestBlockhash({ commitment: 'max' })
   ).blockhash;
 
   transaction.add(
